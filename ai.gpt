@@ -1,49 +1,119 @@
 # This python example uses Azure Speech Recognition for Speech collection, uses Elevenlabs for speech synthentis and OpenAI to interpet the text.
 # If you want to try this out please change the API Keys
+# You also need to install the MPV library https://github.com/rossy/mpv-install/blob/master/README.md if you want to enable audio collection
 
 import azure.cognitiveservices.speech as speechsdk
 import openai
 import elevenlabs
-from elevenlabs import set_api_key
-set_api_key("APIKEY FOR ELEVENLABS")
-openai.api_key = 'sk-OPENAIKEYS'
+import json
+import requests
 
-speech_key, service_region = "speechkey", "eastus"
+from elevenlabs import set_api_key
+
+# Initialize your API keys
+set_api_key("") ## Elevenlabs API Key
+openai.api_key = '' ## OpenAI Key
+
+# Set up the Azure Speech SDK
+speech_key, service_region = "", "eastus" ## Azure Speech API Key
 speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
 speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config)
+
+def get_current_weather(location, unit="fahrenheit"):
+    """Get the current weather in a given location."""
+    api_key = ''  # Replace with your API key from OpenWeatherMap
+    base_url = "http://api.openweathermap.org/data/2.5/weather"
+    units = "metric"
+
+    
+    params = {
+        'q': location,
+        'appid': api_key,
+        'units': units
+    }
+   
+    response = requests.get(base_url, params=params)
+    print(params)
+    print(response)
+    
+    if response.status_code == 200:
+        data = response.json()
+        main = data['main']
+        weather = data['weather'][0]
+
+        weather_info = {
+            "location": location,
+            "temperature": str(main['temp']),
+            "unit": unit,
+            "forecast": [weather['description']]
+        }
+        return json.dumps(weather_info)
+    else:
+        return json.dumps({"error": f"Could not fetch weather for {location}. Error {response.status_code}: {response.text}"})
+
+def handle_function_call(response_message):
+    available_functions = {
+        "get_current_weather": get_current_weather,
+    }
+    function_name = response_message["function_call"]["name"]
+    fuction_to_call = available_functions[function_name]
+    function_args = json.loads(response_message["function_call"]["arguments"])
+    function_response = fuction_to_call(
+        location=function_args.get("location"),
+        unit=function_args.get("unit"),
+    )
+    return function_name, function_response
+
+messages = [{"role": "system", "content": "You are an intelligent assistant."}]
+functions = [
+    {
+        "name": "get_current_weather",
+        "description": "Get the current weather in a given location",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "location": {"type": "string", "description": "The city and state, e.g. San Francisco, CA"},
+                "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]},
+            },
+            "required": ["location"],
+        },
+    }
+]
 
 while True:
     print("Talk now")
     result = speech_recognizer.recognize_once()
-    if result.reason == speechsdk.ResultReason.RecognizedSpeech:
-        print("Recognized: {}".format(result.text))
-    elif result.reason == speechsdk.ResultReason.NoMatch:
-        print("No speech could be recognized: {}".format(result.no_match_details))
-    elif result.reason == speechsdk.ResultReason.Canceled:
-        cancellation_details = result.cancellation_details
-        print("Speech Recognition canceled: {}".format(cancellation_details.reason))
-        if cancellation_details.reason == speechsdk.CancellationReason.Error:
-            print("Error details: {}".format(cancellation_details.error_details))
-    
-    messages = [{"role": "system", "content": "You are an intelligent assistant."}]
-    
+
     message = format(result.text)
     if message:
         messages.append({"role": "user", "content": message})
-    
-    chat = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=messages
-    )
-    
-    reply = chat.choices[0].message.content
-    print(f"ChatGPT: {reply}")
-    messages.append({"role": "assistant", "content": reply})
-    
-    audio_stream = elevenlabs.generate(
-        text=reply,
-        voice="Matthew",
-        stream=True
-    )
-    
-    output = elevenlabs.stream(audio_stream)
+        chat = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo", 
+            messages=messages, 
+            functions=functions,
+            function_call="auto"
+        )
+        reply = chat.choices[0].message.content
+
+        # Handle function calls from the assistant
+        if chat.choices[0].message.get("function_call"):
+            function_name, function_response = handle_function_call(chat.choices[0].message)
+            messages.append({"role": "function", "name": function_name, "content": function_response})
+
+            second_response = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo-0613",
+                messages=messages,
+            )
+            response_content = second_response.choices[0].message.content
+            print(f"ChatGPT: {response_content}")
+            messages.append({"role": "assistant", "content": response_content})
+
+            audio_stream = elevenlabs.generate(text=response_content, voice="Matthew", stream=True)
+            output = elevenlabs.stream(audio_stream)
+        else:
+            # If no function call, just handle the original GPT-3 response
+            print(f"ChatGPT: {reply}")
+            messages.append({"role": "assistant", "content": reply})
+
+            audio_stream = elevenlabs.generate(text=reply, voice="Matthew", stream=True)
+            output = elevenlabs.stream(audio_stream)
