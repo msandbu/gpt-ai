@@ -6,8 +6,8 @@ It should be noted here that FM refers to Foundation models.
 |----------------------------------|---------------------------|------------------------|----------------------|
 | LLM Service/Runtime              | Vertex AI                 | Azure OpenAI           | Bedrock              |
 | LLM Models available             | PaLM, LLaMa2, Falcon, Claude2* | GPT, LLaMa2, Falcon, Databricks Dolly | Titan, Claude2, Cohere |
-| LLM Models Catalog               | Model Garden              | Model Catalog         |                      |
-| LLM Token Size FM                   | 32k (PaLM2)               | 32k (GPT4)             |                      |
+| LLM Models Catalog               | Model Garden              | Model Catalog         |  Model Providers                    |
+| LLM Token Size FM                   | 32k (PaLM2)               | 32k (GPT4)             | 8k (Titan)                     |
 | LLM Availability                 |                           |                        |                      |
 | LLM Integration framework        | Vertex AI Extensions      | Microsoft Semantic Kernel |                    |
 | LLM Safety filter                |                           | Azure AI Content Safety |                    |
@@ -27,7 +27,7 @@ It should be noted here that FM refers to Foundation models.
 | Features                         | Google                    | Microsoft              | Amazon Web Services  |
 |----------------------------------|---------------------------|------------------------|----------------------|
 | Text-to-image                    | Imagen                    | DALL-E                 |                      |
-| Speech-to-text                   | Chirp                     | Azure Speech Recognition | Amazon Transcribe |
+| Speech-to-text                   | Chirp                     | Azure Speech Recognition, Whisper | Amazon Transcribe |
 | Text-to-speech                   | Vertex AI                 | Azure Text to speech  | Amazon Polly        |
 
 ## Additional Services
