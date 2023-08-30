@@ -12,7 +12,7 @@ It should be noted here that FM refers to Foundation models.
 | LLM Integration framework        | Vertex AI Extensions      | Microsoft Semantic Kernel |                    |
 | LLM Safety filter                |                           | Azure AI Content Safety |                    |
 | LLM Fine-tuning support          | Code-bison(PaLM), text-bison(PaLM) |                    |                    |
-| LLM Agent                        | Vertex AI Conversation |                    | Bedrock Agents                   |
+| LLM Agent                        | Vertex AI Conversation |  Power Virtual agents                  | Bedrock Agents                   |
 
 ## Machine Learning Features
 
