@@ -3,11 +3,11 @@ import os
 import openai
 import langchain
 
-os.environ["OPENAI_API_KEY"] ="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"
-os.environ["SQL_SERVER_USERNAME"] = "sqladmin" 
-os.environ["SQL_SERVER_ENDPOINT"] = "sl090.database.windows.net"
-os.environ["SQL_SERVER_PASSWORD"] = "Hulksmash!1"  
-os.environ["SQL_SERVER_DATABASE"] = "sql0234234f"
+os.environ["OPENAI_API_KEY"] =""
+os.environ["SQL_SERVER_USERNAME"] = "" 
+os.environ["SQL_SERVER_ENDPOINT"] = ""
+os.environ["SQL_SERVER_PASSWORD"] = ""  
+os.environ["SQL_SERVER_DATABASE"] = ""
 
 from sqlalchemy import create_engine
 from sqlalchemy.engine.url import URL
