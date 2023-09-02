@@ -1,7 +1,6 @@
 # pip install langchain openai google-search-results
 
 import os
-from dotenv import load_dotenv
 import openai
 import langchain
 
