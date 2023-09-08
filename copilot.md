@@ -1,9 +1,11 @@
 ## Overview of different Copilot, ChatGPT and Bing features from Microsoft
 
+This is meant to illustrate the differences between the different GPT enabled services that Microsoft has such as CoPilot and Bing Chat but also how it compared to ChatGPT
+
 ### NB: Windows Copilot is not included since it uses Bing Chat underneath 
 
 
-| Features                                                                                   | ChatGPT                                  | Bing Chat                                | Bing Chat Enterprise                    | Bing Enterprise Chat Powered by M365 Copilot | Copilot Chat / Business Chat (in Teams)                    |
+| Features                                                                                   | ChatGPT (and ChatGPT Plus)                                 | Bing Chat                                | Bing Chat Enterprise                    | Bing Enterprise Chat Powered by M365 Copilot | Copilot Chat / Business Chat (in Teams)                    |
 |---------------------------------------------------------------------------------------------|------------------------------------------|------------------------------------------|------------------------------------------|-----------------------------------------------|------------------------------------------------|
 | Data grounding for Microsoft 365 data 1*                                                        | No                                       | No                                       | No                                       | Yes                                           | Yes                                            |
 | License and cost                                                       | Free (20$ Per user for plus)                                       | Free                                      | Free if you have existing licenses (A3/E3/A5/E5) (5$)                                      | 30$ Per user Per month                                           | 30$ Per user per month                                        |
