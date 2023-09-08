@@ -1,6 +1,7 @@
 ## Overview of different Copilot, ChatGPT and Bing features from Microsoft
 
-This is meant to illustrate the differences between the different GPT enabled services that Microsoft has such as CoPilot and Bing Chat but also how it compared to ChatGPT
+This is meant to illustrate the differences between the different GPT enabled services that Microsoft has such as CoPilot and Bing Chat but also how it compared to ChatGPT. 
+It shows the different features, privacy and security mechanisms which apply to tne end-user. 
 
 ### NB: Windows Copilot is not included since it uses Bing Chat underneath 
 
