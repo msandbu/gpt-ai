@@ -34,7 +34,7 @@ Last Update: 31/08/2023
 |----------------------------------|---------------------------|------------------------|----------------------|
 | Text-to-image                    | Imagen                    | DALL-E                 |                      |
 | Speech-to-text                   | Chirp                     | Azure Speech Recognition, Whisper | Amazon Transcribe |
-| Text-to-speech                   | Vertex AI                 | Azure Text to speech  | Amazon Polly        |
+| Text-to-speech                   | Vertex AI                 | Azure Text to speech, Whisper  | Amazon Polly        |
 
 ## Additional Services
 
