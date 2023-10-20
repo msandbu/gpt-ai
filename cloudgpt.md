@@ -17,7 +17,7 @@ Last Update: 31/08/2023
 | LLM Availability                 |                           |                        |                      |
 | LLM Integration framework        | Vertex AI Extensions      | Microsoft Semantic Kernel |                    |
 | LLM Safety filter                |                           | Azure AI Content Safety |                    |
-| LLM Fine-tuning support          | Code-bison(PaLM), text-bison(PaLM) |  GPT-3.5 supports Fine-tuning but not in Azure yet                 |                    |
+| LLM Fine-tuning support          | Code-bison(PaLM), text-bison(PaLM) |  GPT-3.5 supports Fine-tuning                  |                    |
 | LLM Agent                        | Vertex AI Conversation |  Power Virtual agents                  | Bedrock Agents, Amazon Lex                   |
 
 ## Machine Learning Features
