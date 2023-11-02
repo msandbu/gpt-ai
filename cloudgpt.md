@@ -4,7 +4,7 @@ It should be noted here that FM refers to Foundation language models. Since most
 
 * References to Bison is also just one of the codenames for PALM. 
 
-Last Update: 31/08/2023
+Last Update: 02/11/2023
 
 | Features                         | Google                    | Microsoft              | Amazon Web Services  |
 |----------------------------------|---------------------------|------------------------|----------------------|
@@ -26,7 +26,7 @@ Last Update: 31/08/2023
 |----------------------------------|---------------------------|------------------------|----------------------|
 | **ML Service**                       | Vertex AI Workbench       | Azure Machine Learning | Amazon Sagemaker    |
 | **ML Model Catalogue 3.party**               |                           | Huggingface                      |                      |
-| **Vector Search**                    | Vertex AI Vector Search   | Azure Cognitive Search | Amazon OpenSearch, Amazon Kendra |
+| **Vector Search**                    | Vertex AI Vector Search   | Azure Cognitive Search (Preview) | Amazon OpenSearch, Amazon Kendra |
 
 ## Text and Speech Features
 
