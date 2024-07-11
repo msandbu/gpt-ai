@@ -4,17 +4,16 @@ It should be noted here that FM refers to Foundation language models. Since most
 
 * References to Bison is also just one of the codenames for PALM. 
 
-Last Update: 02/11/2023
+Last Update: 12/07/2024
 
 | Features                         | Google                    | Microsoft              | Amazon Web Services  |
 |----------------------------------|---------------------------|------------------------|----------------------|
 | **LLM Service/Runtime**             | Vertex AI                 | Azure OpenAI           | Bedrock              |
-| **LLM Models available**            | PaLM, LLaMa2, Falcon, Claude2* | GPT, LLaMa2, Falcon, Databricks Dolly | Titan, Claude2, Cohere |
-| **LLM Models Code**             | Code-Bison | Codex  |  |
-| **LLM Models Security**             | Sec-PaLM | tbd |  |
+| **LLM Models available**            | PaLM, LLaMa2, Falcon, Claude2* | GPT, LLaMa3, Falcon, Phi-3 | Titan, Claude2, Cohere |
+| **LLM Models Code**             | Code-Bison | GPT-4o  |  |
+| **LLM Models Security**             | Sec-PaLM | Fine-tuned GPT-4 |  |
 | **LLM Models Catalog**               | Model Garden              | Model Catalog         |  Model Providers                    |
-| **LLM Token Size FM**                   | 32k (PaLM2)               | 32k (GPT4)             | 8k (Titan)                     |
-| **LLM Availability**                 |                           |                        |                      |
+| **LLM Token Size FM**                   | 32k (PaLM2)               | 128k (GPT4)             | 8k (Titan)                     |
 | **LLM Integration framework**        | Vertex AI Extensions      | Microsoft Semantic Kernel |                    |
 | **LLM Safety filter**                |                           | Azure AI Content Safety |                    |
 | **LLM Fine-tuning support**          | Code-bison(PaLM), text-bison(PaLM) |  GPT-3.5 supports Fine-tuning                  |                    |
